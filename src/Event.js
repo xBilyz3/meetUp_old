@@ -2,12 +2,15 @@ import React, { Component } from 'react';
 
 class Event extends Component {
 	state = {
-		event: {},
 		showDetails: false,
 	};
 
 	handleShowDetails = () => {
-		this.setState({ showDetails: true });
+		if (this.state.showDetails === false) {
+			this.setState({ showDetails: true });
+		} else {
+			this.setState({ showDetails: false });
+		}
 	};
 
 	render() {
@@ -16,8 +19,14 @@ class Event extends Component {
 		return (
 			<div>
 				<div className="event">
-					<div className="eventName">{this.state.event.name}</div>
-					<div className="eventDate">{this.state.event.local_date}</div>
+					<div className="eventDate">
+						{this.props.event.local_time} | {this.props.event.local_date}
+					</div>
+					<div className="eventName">{this.props.event.name}</div>
+					<div className="groupName">Group: {this.props.event.group.name}</div>
+					<div className="going">
+						{this.props.event.yes_rsvp_count} people are going
+					</div>
 					<button
 						className="detailsButton"
 						onClick={() => this.handleShowDetails()}>
@@ -27,9 +36,9 @@ class Event extends Component {
 				{showDetails && (
 					<div className="eventDetails">
 						<div className="eventDescription">
-							{this.state.event.description}
+							{this.props.event.description}
 						</div>
-						<div className="eventLink">{this.state.event.link}</div>
+						<div className="eventLink">{this.props.event.link}</div>
 					</div>
 				)}
 			</div>
