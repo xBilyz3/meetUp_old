@@ -47,6 +47,15 @@ describe('<App /> integration', () => {
 
 	test('render correct list of events', () => {
 		const AppWrapper = mount(<App />);
+		//pick event from mockEvents
+		let event = mockEvents.events[0];
+
+		const events = [...Array(4).keys()].map((item, idx) => {
+			const clone = JSON.parse(JSON.strinify(event));
+			clone.id = item;
+			return clone;
+		});
+
 		AppWrapper.setState({
 			events: [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }],
 		});
