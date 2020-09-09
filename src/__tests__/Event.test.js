@@ -1,12 +1,14 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import App from '../App';
 import EventList from '../EventList';
 import Event from '../Event';
 
 describe('<Event /> component', () => {
 	let EventWrapper = shallow(<Event />);
-
+	// beforeEach(() => {
+	// 	EventWrapper =  shallow(<Event />);
+	// });
 	EventWrapper.setProps({
 		event: {
 			created: 1594736289000,
@@ -111,7 +113,7 @@ describe('<Event /> component', () => {
 					lon: 11.57834243774414,
 					repinned: true,
 					address_1: 'AmalienstraÃŸe 71, RGB',
-					city: 'München',
+					city: 'MÃ¼nchen',
 					country: 'de',
 					localized_country_name: 'Germany',
 				},

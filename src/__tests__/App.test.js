@@ -51,13 +51,13 @@ describe('<App /> integration', () => {
 		let event = mockEvents.events[0];
 
 		const events = [...Array(4).keys()].map((item, idx) => {
-			const clone = JSON.parse(JSON.strinify(event));
+			const clone = JSON.parse(JSON.stringify(event));
 			clone.id = item;
 			return clone;
 		});
 
 		AppWrapper.setState({
-			events: [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }],
+			events,
 		});
 		expect(AppWrapper.find('.event')).toHaveLength(4);
 		AppWrapper.unmount();
